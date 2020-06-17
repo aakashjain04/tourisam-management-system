@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tourisam-mangement-system", "tourisam-mangement-system\tourisam-mangement-system.csproj", "{DA0008C8-5BC4-4E0C-9359-2A7368B8688C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA0008C8-5BC4-4E0C-9359-2A7368B8688C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0008C8-5BC4-4E0C-9359-2A7368B8688C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0008C8-5BC4-4E0C-9359-2A7368B8688C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0008C8-5BC4-4E0C-9359-2A7368B8688C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4002448-57A2-4E73-B3D3-FB7C2D7FBBCB}
+	EndGlobalSection
+EndGlobal
