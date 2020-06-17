@@ -15,7 +15,7 @@ namespace tourisam_mangement_system.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your Toursim app description page.";
 
             return View();
         }
