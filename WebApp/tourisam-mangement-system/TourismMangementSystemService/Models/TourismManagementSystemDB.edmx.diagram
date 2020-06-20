@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="948c382d155844b1bc19a0f1d49402fd" Name="Diagram1">
+        <EntityTypeShape EntityType="TourismManagementSystemModel.CITY" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.COST_CATAGORY" Width="1.5" PointX="6" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.COUNTRY" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.FLEET" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.HOTEL" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.LOCATION" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.OFFER" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.REGION" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_CITY" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_COST" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_COUNTRY" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_LOCATION" Width="1.5" PointX="12.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_LOCATION_IMAGE" Width="1.5" PointX="15" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.USER" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.FEEDBACK" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.LOCATION_IMAGE" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_ENQUIRY" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_FLEET" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_HOTEL" Width="1.5" PointX="9.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismManagementSystemModel.TOUR_OFFER" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__CITY__CountryID__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__HOTELS__CityID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__LOCATION__CityID__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_CITY__CityI__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_COST__Cost___656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__COUNTRY__RegionI__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_COUN__Count__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_OFFE__Count__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_FLEE__Fleet__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_HOTE__Hotel__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__LOCATION___Locat__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_LOCA__Locat__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_OFFE__Offer__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR__RegionID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_CITY__TourI__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_COST__TourI__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_COUN__TourI__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_FLEE__TourI__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_HOTE__TourI__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_LOCA__TourI__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_OFFE__TourI__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_CITY__Tour___59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_LOCA__Tour___5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_LOCA__Tour___628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__FEEDBACK__UserId__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismManagementSystemModel.FK__TOUR_ENQU__UserI__4D94879B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
