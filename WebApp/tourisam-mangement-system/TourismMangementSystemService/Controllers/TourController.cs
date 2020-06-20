@@ -34,6 +34,21 @@ namespace TourismMangementSystemService.Controllers
                   
         }
 
+        public HttpResponseMessage Get(int id)
+        {
+            using (TourismManagementSystemEntities entities = new TourismManagementSystemEntities())
+            {
+                CountryDto countryDto = new CountryDto();
+                COUNTRY country = entities.COUNTRies.Where(c => c.CountryID == id).SingleOrDefault();
+                countryDto.CountryId = country.CountryID;
+                countryDto.CountryName = country.CountryName;
+                countryDto.RegionId = country.RegionID;
+                return Request.CreateResponse(HttpStatusCode.OK, countryDto);
+            }
+
+
+        }
+
         public HttpResponseMessage Post(CountryDto countryDto)
         {
             using (TourismManagementSystemEntities entities = new TourismManagementSystemEntities())
@@ -48,6 +63,30 @@ namespace TourismMangementSystemService.Controllers
             }
 
 
+        }
+
+        public HttpResponseMessage Put(int id, CountryDto countryDto)
+        {
+            using (TourismManagementSystemEntities entities = new TourismManagementSystemEntities())
+            {
+                COUNTRY country = entities.COUNTRies.Where(c => c.CountryID == id).SingleOrDefault();               
+                country.CountryName = countryDto.CountryName;
+                country.RegionID = countryDto.RegionId;
+                country.UpdationDate = null;                
+                entities.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+        }
+
+        public HttpResponseMessage Delete(int id)
+        {
+            using (TourismManagementSystemEntities entities = new TourismManagementSystemEntities())
+            {
+                COUNTRY coutry = entities.COUNTRies.Where(c => c.CountryID == id).SingleOrDefault();
+                entities.COUNTRies.Remove(coutry);
+                entities.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
         }
     }
 }
