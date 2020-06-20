@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourismManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CITY">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="CityName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="COUNTRY" Relationship="Self.FK__CITY__CountryID__3C69FB99" FromRole="CITY" ToRole="COUNTRY" />
+    <NavigationProperty Name="HOTELS" Relationship="Self.FK__HOTELS__CityID__440B1D61" FromRole="CITY" ToRole="HOTELS" />
+    <NavigationProperty Name="LOCATIONs" Relationship="Self.FK__LOCATION__CityID__3F466844" FromRole="CITY" ToRole="LOCATION" />
+    <NavigationProperty Name="TOUR_CITY" Relationship="Self.FK__TOUR_CITY__CityI__59FA5E80" FromRole="CITY" ToRole="TOUR_CITY" />
+  </EntityType>
+  <EntityType Name="COST_CATAGORY">
+    <Key>
+      <PropertyRef Name="Cost_Catagory_ID" />
+    </Key>
+    <Property Name="Cost_Catagory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CostType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="TOUR_COST" Relationship="Self.FK__TOUR_COST__Cost___656C112C" FromRole="COST_CATAGORY" ToRole="TOUR_COST" />
+  </EntityType>
+  <EntityType Name="COUNTRY">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionID" Type="Int32" />
+    <Property Name="CountryName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CITies" Relationship="Self.FK__CITY__CountryID__3C69FB99" FromRole="COUNTRY" ToRole="CITY" />
+    <NavigationProperty Name="REGION" Relationship="Self.FK__COUNTRY__RegionI__398D8EEE" FromRole="COUNTRY" ToRole="REGIONS" />
+    <NavigationProperty Name="TOUR_COUNTRY" Relationship="Self.FK__TOUR_COUN__Count__5629CD9C" FromRole="COUNTRY" ToRole="TOUR_COUNTRY" />
+    <NavigationProperty Name="TOUR_OFFER" Relationship="Self.FK__TOUR_OFFE__Count__68487DD7" FromRole="COUNTRY" ToRole="TOUR_OFFER" />
+  </EntityType>
+  <EntityType Name="FLEET">
+    <Key>
+      <PropertyRef Name="FleetID" />
+    </Key>
+    <Property Name="FleetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FleetType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="TOUR_FLEET" Relationship="Self.FK__TOUR_FLEE__Fleet__6FE99F9F" FromRole="FLEETS" ToRole="TOUR_FLEET" />
+  </EntityType>
+  <EntityType Name="HOTEL">
+    <Key>
+      <PropertyRef Name="HotelID" />
+    </Key>
+    <Property Name="HotelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HotelName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CITY" Relationship="Self.FK__HOTELS__CityID__440B1D61" FromRole="HOTELS" ToRole="CITY" />
+    <NavigationProperty Name="TOUR_HOTEL" Relationship="Self.FK__TOUR_HOTE__Hotel__6D0D32F4" FromRole="HOTELS" ToRole="TOUR_HOTEL" />
+  </EntityType>
+  <EntityType Name="LOCATION">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CITY" Relationship="Self.FK__LOCATION__CityID__3F466844" FromRole="LOCATION" ToRole="CITY" />
+    <NavigationProperty Name="LOCATION_IMAGE" Relationship="Self.FK__LOCATION___Locat__412EB0B6" FromRole="LOCATION" ToRole="LOCATION_IMAGE" />
+    <NavigationProperty Name="TOUR_LOCATION" Relationship="Self.FK__TOUR_LOCA__Locat__5EBF139D" FromRole="LOCATION" ToRole="TOUR_LOCATION" />
+  </EntityType>
+  <EntityType Name="OFFER">
+    <Key>
+      <PropertyRef Name="OfferID" />
+    </Key>
+    <Property Name="OfferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OfferDetail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="TOUR_OFFER" Relationship="Self.FK__TOUR_OFFE__Offer__6A30C649" FromRole="OFFER" ToRole="TOUR_OFFER" />
+  </EntityType>
+  <EntityType Name="REGION">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="COUNTRies" Relationship="Self.FK__COUNTRY__RegionI__398D8EEE" FromRole="REGIONS" ToRole="COUNTRY" />
+    <NavigationProperty Name="TOURs" Relationship="Self.FK__TOUR__RegionID__52593CB8" FromRole="REGIONS" ToRole="TOUR" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TOUR">
+    <Key>
+      <PropertyRef Name="TourID" />
+    </Key>
+    <Property Name="RegionID" Type="Int32" />
+    <Property Name="TourID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TourName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TourType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="REGION" Relationship="Self.FK__TOUR__RegionID__52593CB8" FromRole="TOUR" ToRole="REGIONS" />
+    <NavigationProperty Name="TOUR_CITY" Relationship="Self.FK__TOUR_CITY__TourI__5AEE82B9" FromRole="TOUR" ToRole="TOUR_CITY" />
+    <NavigationProperty Name="TOUR_COST" Relationship="Self.FK__TOUR_COST__TourI__66603565" FromRole="TOUR" ToRole="TOUR_COST" />
+    <NavigationProperty Name="TOUR_COUNTRY" Relationship="Self.FK__TOUR_COUN__TourI__5535A963" FromRole="TOUR" ToRole="TOUR_COUNTRY" />
+    <NavigationProperty Name="TOUR_FLEET" Relationship="Self.FK__TOUR_FLEE__TourI__6EF57B66" FromRole="TOUR" ToRole="TOUR_FLEET" />
+    <NavigationProperty Name="TOUR_HOTEL" Relationship="Self.FK__TOUR_HOTE__TourI__6C190EBB" FromRole="TOUR" ToRole="TOUR_HOTEL" />
+    <NavigationProperty Name="TOUR_LOCATION" Relationship="Self.FK__TOUR_LOCA__TourI__5FB337D6" FromRole="TOUR" ToRole="TOUR_LOCATION" />
+    <NavigationProperty Name="TOUR_OFFER" Relationship="Self.FK__TOUR_OFFE__TourI__693CA210" FromRole="TOUR" ToRole="TOUR_OFFER" />
+  </EntityType>
+  <EntityType Name="TOUR_CITY">
+    <Key>
+      <PropertyRef Name="Tour_City_ID" />
+    </Key>
+    <Property Name="Tour_City_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tour_Country_ID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="Tour_City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CITY" Relationship="Self.FK__TOUR_CITY__CityI__59FA5E80" FromRole="TOUR_CITY" ToRole="CITY" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_CITY__TourI__5AEE82B9" FromRole="TOUR_CITY" ToRole="TOUR" />
+    <NavigationProperty Name="TOUR_COUNTRY" Relationship="Self.FK__TOUR_CITY__Tour___59063A47" FromRole="TOUR_CITY" ToRole="TOUR_COUNTRY" />
+    <NavigationProperty Name="TOUR_LOCATION" Relationship="Self.FK__TOUR_LOCA__Tour___5DCAEF64" FromRole="TOUR_CITY" ToRole="TOUR_LOCATION" />
+  </EntityType>
+  <EntityType Name="TOUR_COST">
+    <Key>
+      <PropertyRef Name="Tout_Cost_ID" />
+    </Key>
+    <Property Name="Tout_Cost_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cost_Catagory_ID" Type="Int32" />
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="COST_CATAGORY" Relationship="Self.FK__TOUR_COST__Cost___656C112C" FromRole="TOUR_COST" ToRole="COST_CATAGORY" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_COST__TourI__66603565" FromRole="TOUR_COST" ToRole="TOUR" />
+  </EntityType>
+  <EntityType Name="TOUR_COUNTRY">
+    <Key>
+      <PropertyRef Name="Tour_Country_ID" />
+    </Key>
+    <Property Name="Tour_Country_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="COUNTRY" Relationship="Self.FK__TOUR_COUN__Count__5629CD9C" FromRole="TOUR_COUNTRY" ToRole="COUNTRY" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_COUN__TourI__5535A963" FromRole="TOUR_COUNTRY" ToRole="TOUR" />
+    <NavigationProperty Name="TOUR_CITY" Relationship="Self.FK__TOUR_CITY__Tour___59063A47" FromRole="TOUR_COUNTRY" ToRole="TOUR_CITY" />
+  </EntityType>
+  <EntityType Name="TOUR_LOCATION">
+    <Key>
+      <PropertyRef Name="Tour_Location_ID" />
+    </Key>
+    <Property Name="Tour_Location_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tour_City_ID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="LOCATION" Relationship="Self.FK__TOUR_LOCA__Locat__5EBF139D" FromRole="TOUR_LOCATION" ToRole="LOCATION" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_LOCA__TourI__5FB337D6" FromRole="TOUR_LOCATION" ToRole="TOUR" />
+    <NavigationProperty Name="TOUR_CITY" Relationship="Self.FK__TOUR_LOCA__Tour___5DCAEF64" FromRole="TOUR_LOCATION" ToRole="TOUR_CITY" />
+    <NavigationProperty Name="TOUR_LOCATION_IMAGE" Relationship="Self.FK__TOUR_LOCA__Tour___628FA481" FromRole="TOUR_LOCATION" ToRole="TOUR_LOCATION_IMAGE" />
+  </EntityType>
+  <EntityType Name="TOUR_LOCATION_IMAGE">
+    <Key>
+      <PropertyRef Name="TOUR_LOC_IMG_ID" />
+    </Key>
+    <Property Name="TOUR_LOC_IMG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tour_Location_ID" Type="Int32" />
+    <Property Name="ImageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Image_URL_Desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="TOUR_LOCATION" Relationship="Self.FK__TOUR_LOCA__Tour___628FA481" FromRole="TOUR_LOCATION_IMAGE" ToRole="TOUR_LOCATION" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UserContact" Type="Int32" />
+    <Property Name="UserEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="FEEDBACKs" Relationship="Self.FK__FEEDBACK__UserId__4BAC3F29" FromRole="USERS" ToRole="FEEDBACK" />
+    <NavigationProperty Name="TOUR_ENQUIRY" Relationship="Self.FK__TOUR_ENQU__UserI__4D94879B" FromRole="USERS" ToRole="TOUR_ENQUIRY" />
+  </EntityType>
+  <EntityType Name="FEEDBACK">
+    <Key>
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Raiting" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__FEEDBACK__UserId__4BAC3F29" FromRole="FEEDBACK" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="LOCATION_IMAGE">
+    <Key>
+      <PropertyRef Name="Location_Img_ID" />
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="Location_Img_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location_IMG_URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location_IMG_DESCR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="LOCATION" Relationship="Self.FK__LOCATION___Locat__412EB0B6" FromRole="LOCATION_IMAGE" ToRole="LOCATION" />
+  </EntityType>
+  <EntityType Name="TOUR_ENQUIRY">
+    <Key>
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="UserEmail" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="USER" Relationship="Self.FK__TOUR_ENQU__UserI__4D94879B" FromRole="TOUR_ENQUIRY" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="TOUR_FLEET">
+    <Key>
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="FleetID" Type="Int32" />
+    <Property Name="Tour_Fleet_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="FLEET" Relationship="Self.FK__TOUR_FLEE__Fleet__6FE99F9F" FromRole="TOUR_FLEET" ToRole="FLEETS" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_FLEE__TourI__6EF57B66" FromRole="TOUR_FLEET" ToRole="TOUR" />
+  </EntityType>
+  <EntityType Name="TOUR_HOTEL">
+    <Key>
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="HotelID" Type="Int32" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="HOTEL" Relationship="Self.FK__TOUR_HOTE__Hotel__6D0D32F4" FromRole="TOUR_HOTEL" ToRole="HOTELS" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_HOTE__TourI__6C190EBB" FromRole="TOUR_HOTEL" ToRole="TOUR" />
+  </EntityType>
+  <EntityType Name="TOUR_OFFER">
+    <Key>
+      <PropertyRef Name="UpdationDate" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="TourID" Type="Int32" />
+    <Property Name="OfferID" Type="Int32" />
+    <Property Name="OfferDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdationDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="COUNTRY" Relationship="Self.FK__TOUR_OFFE__Count__68487DD7" FromRole="TOUR_OFFER" ToRole="COUNTRY" />
+    <NavigationProperty Name="OFFER" Relationship="Self.FK__TOUR_OFFE__Offer__6A30C649" FromRole="TOUR_OFFER" ToRole="OFFER" />
+    <NavigationProperty Name="TOUR" Relationship="Self.FK__TOUR_OFFE__TourI__693CA210" FromRole="TOUR_OFFER" ToRole="TOUR" />
+  </EntityType>
+  <Association Name="FK__CITY__CountryID__3C69FB99">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="CITY">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOTELS__CityID__440B1D61">
+    <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+    <End Role="HOTELS" Type="Self.HOTEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITY">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="HOTELS">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOCATION__CityID__3F466844">
+    <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITY">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="LOCATION">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_CITY__CityI__59FA5E80">
+    <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+    <End Role="TOUR_CITY" Type="Self.TOUR_CITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITY">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="TOUR_CITY">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_COST__Cost___656C112C">
+    <End Role="COST_CATAGORY" Type="Self.COST_CATAGORY" Multiplicity="0..1" />
+    <End Role="TOUR_COST" Type="Self.TOUR_COST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COST_CATAGORY">
+        <PropertyRef Name="Cost_Catagory_ID" />
+      </Principal>
+      <Dependent Role="TOUR_COST">
+        <PropertyRef Name="Cost_Catagory_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COUNTRY__RegionI__398D8EEE">
+    <End Role="REGIONS" Type="Self.REGION" Multiplicity="0..1" />
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGIONS">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="COUNTRY">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_COUN__Count__5629CD9C">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="TOUR_COUNTRY" Type="Self.TOUR_COUNTRY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="TOUR_COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_OFFE__Count__68487DD7">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="TOUR_OFFER" Type="Self.TOUR_OFFER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="TOUR_OFFER">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_FLEE__Fleet__6FE99F9F">
+    <End Role="FLEETS" Type="Self.FLEET" Multiplicity="0..1" />
+    <End Role="TOUR_FLEET" Type="Self.TOUR_FLEET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FLEETS">
+        <PropertyRef Name="FleetID" />
+      </Principal>
+      <Dependent Role="TOUR_FLEET">
+        <PropertyRef Name="FleetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_HOTE__Hotel__6D0D32F4">
+    <End Role="HOTELS" Type="Self.HOTEL" Multiplicity="0..1" />
+    <End Role="TOUR_HOTEL" Type="Self.TOUR_HOTEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELS">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="TOUR_HOTEL">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOCATION___Locat__412EB0B6">
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+    <End Role="LOCATION_IMAGE" Type="Self.LOCATION_IMAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="LOCATION_IMAGE">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_LOCA__Locat__5EBF139D">
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+    <End Role="TOUR_LOCATION" Type="Self.TOUR_LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="TOUR_LOCATION">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_OFFE__Offer__6A30C649">
+    <End Role="OFFER" Type="Self.OFFER" Multiplicity="0..1" />
+    <End Role="TOUR_OFFER" Type="Self.TOUR_OFFER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFER">
+        <PropertyRef Name="OfferID" />
+      </Principal>
+      <Dependent Role="TOUR_OFFER">
+        <PropertyRef Name="OfferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR__RegionID__52593CB8">
+    <End Role="REGIONS" Type="Self.REGION" Multiplicity="0..1" />
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGIONS">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="TOUR">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_CITY__TourI__5AEE82B9">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_CITY" Type="Self.TOUR_CITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_CITY">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_COST__TourI__66603565">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_COST" Type="Self.TOUR_COST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_COST">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_COUN__TourI__5535A963">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_COUNTRY" Type="Self.TOUR_COUNTRY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_COUNTRY">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_FLEE__TourI__6EF57B66">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_FLEET" Type="Self.TOUR_FLEET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_FLEET">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_HOTE__TourI__6C190EBB">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_HOTEL" Type="Self.TOUR_HOTEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_HOTEL">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_LOCA__TourI__5FB337D6">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_LOCATION" Type="Self.TOUR_LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_LOCATION">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_OFFE__TourI__693CA210">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="0..1" />
+    <End Role="TOUR_OFFER" Type="Self.TOUR_OFFER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TOUR_OFFER">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_CITY__Tour___59063A47">
+    <End Role="TOUR_COUNTRY" Type="Self.TOUR_COUNTRY" Multiplicity="0..1" />
+    <End Role="TOUR_CITY" Type="Self.TOUR_CITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR_COUNTRY">
+        <PropertyRef Name="Tour_Country_ID" />
+      </Principal>
+      <Dependent Role="TOUR_CITY">
+        <PropertyRef Name="Tour_Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_LOCA__Tour___5DCAEF64">
+    <End Role="TOUR_CITY" Type="Self.TOUR_CITY" Multiplicity="0..1" />
+    <End Role="TOUR_LOCATION" Type="Self.TOUR_LOCATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR_CITY">
+        <PropertyRef Name="Tour_City_ID" />
+      </Principal>
+      <Dependent Role="TOUR_LOCATION">
+        <PropertyRef Name="Tour_City_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_LOCA__Tour___628FA481">
+    <End Role="TOUR_LOCATION" Type="Self.TOUR_LOCATION" Multiplicity="0..1" />
+    <End Role="TOUR_LOCATION_IMAGE" Type="Self.TOUR_LOCATION_IMAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR_LOCATION">
+        <PropertyRef Name="Tour_Location_ID" />
+      </Principal>
+      <Dependent Role="TOUR_LOCATION_IMAGE">
+        <PropertyRef Name="Tour_Location_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FEEDBACK__UserId__4BAC3F29">
+    <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="FEEDBACK" Type="Self.FEEDBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="FEEDBACK">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TOUR_ENQU__UserI__4D94879B">
+    <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="TOUR_ENQUIRY" Type="Self.TOUR_ENQUIRY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TOUR_ENQUIRY">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TourismManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CITies" EntityType="Self.CITY" />
+    <EntitySet Name="COST_CATAGORY" EntityType="Self.COST_CATAGORY" />
+    <EntitySet Name="COUNTRies" EntityType="Self.COUNTRY" />
+    <EntitySet Name="FLEETS" EntityType="Self.FLEET" />
+    <EntitySet Name="HOTELS" EntityType="Self.HOTEL" />
+    <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+    <EntitySet Name="OFFERs" EntityType="Self.OFFER" />
+    <EntitySet Name="REGIONS" EntityType="Self.REGION" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TOURs" EntityType="Self.TOUR" />
+    <EntitySet Name="TOUR_CITY" EntityType="Self.TOUR_CITY" />
+    <EntitySet Name="TOUR_COST" EntityType="Self.TOUR_COST" />
+    <EntitySet Name="TOUR_COUNTRY" EntityType="Self.TOUR_COUNTRY" />
+    <EntitySet Name="TOUR_LOCATION" EntityType="Self.TOUR_LOCATION" />
+    <EntitySet Name="TOUR_LOCATION_IMAGE" EntityType="Self.TOUR_LOCATION_IMAGE" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <EntitySet Name="FEEDBACKs" EntityType="Self.FEEDBACK" />
+    <EntitySet Name="LOCATION_IMAGE" EntityType="Self.LOCATION_IMAGE" />
+    <EntitySet Name="TOUR_ENQUIRY" EntityType="Self.TOUR_ENQUIRY" />
+    <EntitySet Name="TOUR_FLEET" EntityType="Self.TOUR_FLEET" />
+    <EntitySet Name="TOUR_HOTEL" EntityType="Self.TOUR_HOTEL" />
+    <EntitySet Name="TOUR_OFFER" EntityType="Self.TOUR_OFFER" />
+    <AssociationSet Name="FK__CITY__CountryID__3C69FB99" Association="Self.FK__CITY__CountryID__3C69FB99">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="CITY" EntitySet="CITies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOTELS__CityID__440B1D61" Association="Self.FK__HOTELS__CityID__440B1D61">
+      <End Role="CITY" EntitySet="CITies" />
+      <End Role="HOTELS" EntitySet="HOTELS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOCATION__CityID__3F466844" Association="Self.FK__LOCATION__CityID__3F466844">
+      <End Role="CITY" EntitySet="CITies" />
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_CITY__CityI__59FA5E80" Association="Self.FK__TOUR_CITY__CityI__59FA5E80">
+      <End Role="CITY" EntitySet="CITies" />
+      <End Role="TOUR_CITY" EntitySet="TOUR_CITY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_COST__Cost___656C112C" Association="Self.FK__TOUR_COST__Cost___656C112C">
+      <End Role="COST_CATAGORY" EntitySet="COST_CATAGORY" />
+      <End Role="TOUR_COST" EntitySet="TOUR_COST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COUNTRY__RegionI__398D8EEE" Association="Self.FK__COUNTRY__RegionI__398D8EEE">
+      <End Role="REGIONS" EntitySet="REGIONS" />
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_COUN__Count__5629CD9C" Association="Self.FK__TOUR_COUN__Count__5629CD9C">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="TOUR_COUNTRY" EntitySet="TOUR_COUNTRY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_OFFE__Count__68487DD7" Association="Self.FK__TOUR_OFFE__Count__68487DD7">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="TOUR_OFFER" EntitySet="TOUR_OFFER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_FLEE__Fleet__6FE99F9F" Association="Self.FK__TOUR_FLEE__Fleet__6FE99F9F">
+      <End Role="FLEETS" EntitySet="FLEETS" />
+      <End Role="TOUR_FLEET" EntitySet="TOUR_FLEET" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_HOTE__Hotel__6D0D32F4" Association="Self.FK__TOUR_HOTE__Hotel__6D0D32F4">
+      <End Role="HOTELS" EntitySet="HOTELS" />
+      <End Role="TOUR_HOTEL" EntitySet="TOUR_HOTEL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOCATION___Locat__412EB0B6" Association="Self.FK__LOCATION___Locat__412EB0B6">
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+      <End Role="LOCATION_IMAGE" EntitySet="LOCATION_IMAGE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_LOCA__Locat__5EBF139D" Association="Self.FK__TOUR_LOCA__Locat__5EBF139D">
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+      <End Role="TOUR_LOCATION" EntitySet="TOUR_LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_OFFE__Offer__6A30C649" Association="Self.FK__TOUR_OFFE__Offer__6A30C649">
+      <End Role="OFFER" EntitySet="OFFERs" />
+      <End Role="TOUR_OFFER" EntitySet="TOUR_OFFER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR__RegionID__52593CB8" Association="Self.FK__TOUR__RegionID__52593CB8">
+      <End Role="REGIONS" EntitySet="REGIONS" />
+      <End Role="TOUR" EntitySet="TOURs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_CITY__TourI__5AEE82B9" Association="Self.FK__TOUR_CITY__TourI__5AEE82B9">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_CITY" EntitySet="TOUR_CITY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_COST__TourI__66603565" Association="Self.FK__TOUR_COST__TourI__66603565">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_COST" EntitySet="TOUR_COST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_COUN__TourI__5535A963" Association="Self.FK__TOUR_COUN__TourI__5535A963">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_COUNTRY" EntitySet="TOUR_COUNTRY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_FLEE__TourI__6EF57B66" Association="Self.FK__TOUR_FLEE__TourI__6EF57B66">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_FLEET" EntitySet="TOUR_FLEET" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_HOTE__TourI__6C190EBB" Association="Self.FK__TOUR_HOTE__TourI__6C190EBB">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_HOTEL" EntitySet="TOUR_HOTEL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_LOCA__TourI__5FB337D6" Association="Self.FK__TOUR_LOCA__TourI__5FB337D6">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_LOCATION" EntitySet="TOUR_LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_OFFE__TourI__693CA210" Association="Self.FK__TOUR_OFFE__TourI__693CA210">
+      <End Role="TOUR" EntitySet="TOURs" />
+      <End Role="TOUR_OFFER" EntitySet="TOUR_OFFER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_CITY__Tour___59063A47" Association="Self.FK__TOUR_CITY__Tour___59063A47">
+      <End Role="TOUR_COUNTRY" EntitySet="TOUR_COUNTRY" />
+      <End Role="TOUR_CITY" EntitySet="TOUR_CITY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_LOCA__Tour___5DCAEF64" Association="Self.FK__TOUR_LOCA__Tour___5DCAEF64">
+      <End Role="TOUR_CITY" EntitySet="TOUR_CITY" />
+      <End Role="TOUR_LOCATION" EntitySet="TOUR_LOCATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_LOCA__Tour___628FA481" Association="Self.FK__TOUR_LOCA__Tour___628FA481">
+      <End Role="TOUR_LOCATION" EntitySet="TOUR_LOCATION" />
+      <End Role="TOUR_LOCATION_IMAGE" EntitySet="TOUR_LOCATION_IMAGE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FEEDBACK__UserId__4BAC3F29" Association="Self.FK__FEEDBACK__UserId__4BAC3F29">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="FEEDBACK" EntitySet="FEEDBACKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TOUR_ENQU__UserI__4D94879B" Association="Self.FK__TOUR_ENQU__UserI__4D94879B">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="TOUR_ENQUIRY" EntitySet="TOUR_ENQUIRY" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TourismManagementSystemModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TourismManagementSystemModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
